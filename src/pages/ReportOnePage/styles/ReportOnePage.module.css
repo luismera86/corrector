@@ -1,0 +1,10 @@
+.reportonepage{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    padding: 2rem;
+    border: 1px solid #e5f876;
+    margin: 3rem;
+    border-radius: 1rem;
+    background-color: #393b43;
+}

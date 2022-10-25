@@ -1,0 +1,109 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 5rem;
+  }
+  
+  .container-stunet-info {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    width: 60%;
+  }
+  
+  #delivery-selection {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    padding: 2rem;
+    border: 1px solid #e5f876;
+  }
+  
+  .label-student-info {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .input-student-info {
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    border: 1px solid #e5f876;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    background-color: #393b43;
+    color: #bebebe;
+  }
+  
+  #delivery-selector {
+    margin: 2rem;
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    border: 1px solid #e5f876;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    background-color: #393b43;
+    color: #bebebe;
+  }
+  
+  #delivery-evaluation {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5f876;
+    margin: 3rem;
+  }
+  
+  .evaluation-box{
+      display: flex;
+      flex-direction: row;
+      padding: 1rem;
+  }
+  
+  .evaluation-box > div {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+  }
+  
+  .select-evaluation {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #e5f876;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    background-color: #393b43;
+    color: #bebebe;
+  }
+
+  .evaluation-comments{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .evaluation-comments > textarea {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #e5f876;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    background-color: #393b43;
+    color: #bebebe;
+  }
+
+  .btn-clear {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #e5f876;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    background-color: #e5f876;
+    color: #393b43;
+    width: 25%;
+    cursor: pointer;
+  }
