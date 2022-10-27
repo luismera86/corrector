@@ -15,27 +15,28 @@ import { useReport } from '../../../../hook/useReport'
 const DeliveryOne = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const deliveryOne = useSelector(state => state.deliveryOne)
 
-  const { handleSaveComment, handleRemoveComment, handleNoteThreeActivities, handleCalculateResult, handleCalculateDevolution, handleStudentName, report } =
-    useReport()
+  const {
+    handleSaveComment,
+    handleRemoveComment,
+    handleNoteThreeActivities,
+    handleCalculateResult,
+    handleCalculateDevolution,
+    handleStudentName,
+    handleCourse,
+    report,
+  } = useReport()
 
   const { commentOne, commentTwo, commentThree, resultNote, noteOne, noteTwo, noteThree, devolution } = report
-
-  useEffect(() => {
-    dispatch(getDeliveryOne())
-    handleStudentName(deliveryOne.studentName)
-  }, [dispatch, deliveryOne.studentName])
 
   useEffect(() => {
     handleCalculateResult()
     dispatch(getDeliveryOne())
   }, [noteOne, noteTwo, noteThree])
-  
+
   useEffect(() => {
     handleCalculateDevolution()
   }, [resultNote])
-
 
   useEffect(() => {
     dispatch(setDeliveryOne(report))
@@ -44,6 +45,27 @@ const DeliveryOne = () => {
 
   return (
     <div id='delivery-evaluation'>
+      <div>
+        <h1>Corrector de pre-entregas - Curso de Javascript</h1>
+        <section className='container-stunet-info'>
+          <label className='label-student-info'>Estudiante</label>
+          <input
+            type='text'
+            id='student'
+            placeholder='Ingrese el nombre y apellido del estudiante evaluado'
+            className='input-student-info'
+            onChange={e => handleStudentName(e)}
+          />
+          <label className='label-student-info'>Curso/Comisión</label>
+          <input
+            type='text'
+            id='course'
+            placeholder='Completar con nombre de curso y comisión'
+            className='input-student-info'
+            onChange={e => handleCourse(e)}
+          />
+        </section>
+      </div>
       <section>
         <h2>Consigna Pre-entrega 1</h2>
         <p>Comienza a crear la estructura inicial de tu proyecto integrador. Deberás:</p>
@@ -69,7 +91,7 @@ const DeliveryOne = () => {
               onChange={e => handleNoteThreeActivities(e)}
               className='select-evaluation'
               id='noteOne'>
-              <option value='0'>Seleccionar</option>
+              <option value='0'>Estado</option>
               <option value='1'>Realizado</option>
               <option value='2'>Incompleto</option>
               <option value='3'>No realizado</option>
@@ -101,7 +123,7 @@ const DeliveryOne = () => {
               onChange={e => handleNoteThreeActivities(e)}
               className='select-evaluation'
               id='noteTwo'>
-              <option value='0'>Seleccionar</option>
+              <option value='0'>Estado</option>
               <option value='1'>Realizado</option>
               <option value='2'>Incompleto</option>
               <option value='3'>No realizado</option>
@@ -134,7 +156,7 @@ const DeliveryOne = () => {
               onChange={e => handleNoteThreeActivities(e)}
               className='select-evaluation'
               id='noteThree'>
-              <option value='0'>Seleccionar</option>
+              <option value='0'>Estado</option>
               <option value='1'>Realizado</option>
               <option value='2'>Incompleto</option>
               <option value='3'>No realizado</option>

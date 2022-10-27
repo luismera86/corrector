@@ -1,18 +1,28 @@
 import styles from './styles/ReportOnePage.module.css'
-import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 const ReportOnePage = () => {
-  const report = useSelector((state) => state.deliveryOne)
-  const { commentOne, commentTwo, commentThree, studentName, resultNote, activityOne, activityTwo, activityThree, devolution } = report
+  const report = useSelector(state => state.deliveryOne)
+  const {
+    commentOne,
+    commentTwo,
+    commentThree,
+    studentName,
+    resultNote,
+    activityOne,
+    activityTwo,
+    activityThree,
+    devolution,
+    course,
+  } = report
 
-  useEffect(() => {
-    // console.log(report)
-  }, [report])
   return (
-    <div className={styles.reportonepage } id='element'>
+    <div className={styles.reportonepage} id='element'>
       <h2>
         Estudiante <span>{studentName}</span>
+      </h2>
+      <h2>
+        Comisión <span>{course}</span>
       </h2>
       <section>
         <h2>Consigna Pre-entrega 1</h2>
@@ -24,7 +34,7 @@ const ReportOnePage = () => {
         <p>- Armar la estructura HTML del proyecto. - Incorporar algoritmo condicional y algoritmo con ciclo.</p>
         <p>- Utilizar funciones para realizar esas operaciones.</p>
       </section>
-        <h2>Evaluación</h2>
+      <h2>Evaluación</h2>
       <div className={styles.box}>
         <h3>Estructura HTML y archivo JS</h3>
         La estructura HTML está completa y ejecutada con buenas prácticas o utiliza el el starter template de Bootstrap
@@ -71,12 +81,17 @@ const ReportOnePage = () => {
           Resultado <span>{resultNote}</span>
         </h2>
         <h3>Devolución</h3>
-        <p>{devolution }</p>
+        <p>{devolution}</p>
       </section>
       <div className='oculto-impresion'>
-
-      <button onClick={() => {javascript:window.print()}} className={styles.button} >IMPRIMIR</button>
-      </div >
+        <button
+          onClick={() => {
+            javascript: window.print()
+          }}
+          className={styles.button}>
+          IMPRIMIR
+        </button>
+      </div>
     </div>
   )
 }

@@ -1,9 +1,8 @@
-import { DeliveryOne, StudentInfo } from '../../components'
+import { DeliveryOne } from '../../components'
 
 const DeliveryOnePage = () => {
   return (
     <>
-      <StudentInfo />
       <DeliveryOne />
     </>
   )
