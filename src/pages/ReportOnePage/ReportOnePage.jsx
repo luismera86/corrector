@@ -1,9 +1,16 @@
-import { EvaluationContext } from '../../context/EvaluationContext'
 import styles from './styles/ReportOnePage.module.css'
-import { useContext } from 'react'
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 const ReportOnePage = () => {
-	const { result, commentOne, commentTwo, commentThree } = useContext(EvaluationContext)
+
+  const report = useSelector((state) => state.deliveryOne)
+
+  const { commentOne, commentTwo, commentThree, noteOne, noteTwo, noteThree } = report
+  
+  useEffect(() => {
+    console.log(report)
+  }, [report])
   return (
     <div className={styles.reportonepage}>
       <section>
@@ -22,7 +29,7 @@ const ReportOnePage = () => {
         La estructura HTML está completa y ejecutada con buenas prácticas o utiliza el el starter template de Bootstrap
         u otro framework para el uso adecuado de HTML5 *. El archivo JS está correctamente referenciado en el HTML.
         <h3>
-          Estado <samp>{/* aqui va el valor elegido */}</samp>
+          Estado <samp>{ noteOne}</samp>
         </h3>
         <div>
           <h3>Comentarios</h3>
@@ -57,7 +64,7 @@ const ReportOnePage = () => {
         </div>
 		  </div>
 		  <section>
-			  <h2>Resultado {result }</h2>
+			  <h2>Resultado </h2>
 			  <h3>Devolución</h3>
 			  <p>Comentarios del profesor</p>
 		  </section>

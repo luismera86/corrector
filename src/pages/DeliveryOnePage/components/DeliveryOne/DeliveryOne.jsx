@@ -1,73 +1,26 @@
 import './deliveryOne.css'
 
-import { useContext, useEffect } from 'react'
-
 import DevolutionNote from '../../../../components/DevolutionNote/DevolutionNote'
-import { EvaluationContext } from '../../../../context/EvaluationContext'
-import { otro } from '../../../../services/otro'
+import { setDeliveryOne } from '../../../../redux/features/deliveryOneSlice/deliveryOneSlice'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useReport } from '../../../../hook/useReport'
 
 const DeliveryOne = () => {
-  const {
-    result,
-    calculateResult,
-    commentOne,
-    commentTwo,
-    commentThree,
-    setCommentOne,
-    setCommentTwo,
-    setCommentThree,
-    handleSaveComments,
-    handleClearComments,
-    noteOne,
-    noteTwo,
-    noteThree,
-    setNoteOne,
-    setNoteTwo,
-    setNoteThree,
-  } = useContext(EvaluationContext)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { report, handleSaveComment, handleRemoveComment, handleNoteThreeActivities, handleCalculateResult } =
+    useReport()
+
+  const { commentOne, commentTwo, commentThree, resultNote, noteOne, noteTwo, noteThree } = report
 
   useEffect(() => {
-    setCommentOne(localStorage.getItem('comment-evaluation-1'))
-    setCommentTwo(localStorage.getItem('comment-evaluation-2'))
-    setCommentThree(localStorage.getItem('comment-evaluation-3'))
-  }, [])
-  useEffect(() => {
-    calculateResult(noteOne, noteTwo, noteThree)
+    handleCalculateResult()
   }, [noteOne, noteTwo, noteThree])
-
-  const handleNoteOne = e => {
-    const value = e.target.value
-    if (value == 1) {
-      setNoteOne(33)
-    } else if (value == 2) {
-      setNoteOne(15)
-    } else if (value == 3) {
-      setNoteOne(0)
-    }
-  }
-  const handleNoteTwo = e => {
-    const value = e.target.value
-
-    if (value == 1) {
-      setNoteTwo(33)
-    } else if (value == 2) {
-      setNoteTwo(15)
-    } else if (value == 3) {
-      setNoteTwo(0)
-    }
-  }
-  const handleNoteThree = e => {
-    const value = e.target.value
-    if (value == 1) {
-      setNoteThree(33)
-    } else if (value == 2) {
-      setNoteThree(15)
-    } else if (value == 3) {
-      setNoteThree(0)
-    }
-  }
-
-  // TODO: separar la consigna en otro componente para reutilizarla, separar los criterios de evaluación en otro componente para reutilizarlo en el informe final
+  useEffect(() => {
+    dispatch(setDeliveryOne(report))
+  }, [report])
 
   return (
     <div id='delivery-evaluation'>
@@ -91,7 +44,7 @@ const DeliveryOne = () => {
               Bootstrap u otro framework para el uso adecuado de HTML5 *. El archivo JS está correctamente referenciado
               en el HTML.
             </p>
-            <select onChange={handleNoteOne} className='select-evaluation' id='evaluation-1'>
+            <select onChange={e => handleNoteThreeActivities(e)} className='select-evaluation' id='noteOne'>
               <option value='0'>Seleccionar</option>
               <option value='1'>Realizado</option>
               <option value='2'>Incompleto</option>
@@ -102,11 +55,12 @@ const DeliveryOne = () => {
             <h3>Comentarios</h3>
             <textarea
               value={commentOne}
-              onChange={e => handleSaveComments(e)}
+              name='commentOne'
+              onChange={e => handleSaveComment(e)}
               id='comment-evaluation-1'
               cols='30'
               rows='10'></textarea>
-            <button onClick={() => handleClearComments('comment-evaluation-1')} className='btn-clear'>
+            <button onClick={() => handleRemoveComment('comment-evaluation-1')} className='btn-clear'>
               Borrar comentario
             </button>
           </div>
@@ -118,7 +72,7 @@ const DeliveryOne = () => {
               Se utiliza algoritmo condicional y con ciclo (IF, bucles for) de manera óptima , reflejando lo aprendido
               en clase.
             </p>
-            <select onChange={handleNoteTwo} className='select-evaluation' id='evaluation-2'>
+            <select onChange={e => handleNoteThreeActivities(e)} className='select-evaluation' id='noteTwo'>
               <option value='0'>Seleccionar</option>
               <option value='1'>Realizado</option>
               <option value='2'>Incompleto</option>
@@ -129,11 +83,12 @@ const DeliveryOne = () => {
             <h3>Comentarios</h3>
             <textarea
               value={commentTwo}
-              onChange={e => handleSaveComments(e)}
+              name='commentTwo'
+              onChange={e => handleSaveComment(e)}
               id='comment-evaluation-2'
               cols='30'
               rows='10'></textarea>
-            <button onClick={() => handleClearComments('comment-evaluation-2')} className='btn-clear'>
+            <button onClick={() => handleRemoveComment('comment-evaluation-2')} className='btn-clear'>
               Borrar comentario
             </button>
           </div>
@@ -142,9 +97,11 @@ const DeliveryOne = () => {
           <div>
             <h3>Funciones</h3>
             <p>
-            Los nombres de las funciones son claros y dan a entender que acción realizan. Se emplea la estructura correcta para el armado de las mismas. Crea funciones dinámicas de manera correcta. Generan un resultado correcto cuando se ejecutan.	
+              Los nombres de las funciones son claros y dan a entender que acción realizan. Se emplea la estructura
+              correcta para el armado de las mismas. Crea funciones dinámicas de manera correcta. Generan un resultado
+              correcto cuando se ejecutan.
             </p>
-            <select onChange={handleNoteThree} className='select-evaluation' id='evaluation-3'>
+            <select onChange={e => handleNoteThreeActivities(e)} className='select-evaluation' id='noteThree'>
               <option value='0'>Seleccionar</option>
               <option value='1'>Realizado</option>
               <option value='2'>Incompleto</option>
@@ -155,11 +112,12 @@ const DeliveryOne = () => {
             <h3>Comentarios</h3>
             <textarea
               value={commentThree}
-              onChange={e => handleSaveComments(e)}
+              name='commentThree'
+              onChange={e => handleSaveComment(e)}
               id='comment-evaluation-3'
               cols='30'
               rows='10'></textarea>
-            <button onClick={() => handleClearComments('comment-evaluation-3')} className='btn-clear'>
+            <button onClick={() => handleRemoveComment('comment-evaluation-3')} className='btn-clear'>
               Borrar comentario
             </button>
           </div>
@@ -167,13 +125,15 @@ const DeliveryOne = () => {
       </section>
       <div>
         <h2>
-          Resultado <span>{result === undefined ? '' : result}</span>
+          Resultado <span>{resultNote}</span>
         </h2>
       </div>
       <div className='html2pdf__pagebreak'>
         <DevolutionNote />
       </div>
-      <button onClick={otro}>PDF</button>
+      <button className='button' onClick={() => navigate('/reportone', report)}>
+        GENERAR INFORME
+      </button>
     </div>
   )
 }
