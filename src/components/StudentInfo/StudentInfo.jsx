@@ -1,22 +1,30 @@
 import './students.css'
 
-import { EvaluationContext } from '../../context/EvaluationContext'
-import { useContext } from 'react'
+import { setDeliveryOne } from '../../redux/features/deliveryOneSlice/deliveryOneSlice'
+import { useDispatch } from 'react-redux'
 
 const StudentInfo = () => {
-  const { studentName, handleSaveStudentName } = useContext(EvaluationContext)
+  const dispatch = useDispatch()
+
+  const handleStudentName = e => {
+    dispatch(setDeliveryOne({ studentName: e.target.value }))
+  }
+
+  const handleCourse = e => {
+    dispatch(setDeliveryOne({ course: e.target.value }))
+  }
+
   return (
     <div className='container'>
       <h1>Corrector de pre-entregas - Curso de Javascript</h1>
       <section className='container-stunet-info'>
         <label className='label-student-info'>Estudiante</label>
         <input
-          value={studentName}
           type='text'
           id='student'
           placeholder='Ingrese el nombre y apellido del estudiante evaluado'
           className='input-student-info'
-          onChange={(e) => handleSaveStudentName(e)}
+          onChange={e => handleStudentName(e)}
         />
         <label className='label-student-info'>Curso/Comisión</label>
         <input
@@ -24,9 +32,8 @@ const StudentInfo = () => {
           id='course'
           placeholder='Completar con nombre de curso y comisión'
           className='input-student-info'
+          onChange={e => handleCourse(e)}
         />
-        <label className='label-student-info'>Proyecto</label>
-        <input type='text' id='project' placeholder='Mencione el nombre de proyecto' className='input-student-info' />
       </section>
     </div>
   )

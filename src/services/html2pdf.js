@@ -2,9 +2,9 @@
 const element = document.getElementById('delivery-evaluation');
 
 export const savePdf = () => {
-    let doc = new jsPDF('p', 'pt', 'a4');
+    let doc = new jsPDF('p', 'pt', 'letter');
     let margin = 0;
-    let scale = (doc.internal.pageSize.width - 1 * margin) / element.offsetWidth;
+    let scale = (1) ; 
     doc.html (element, {
         x: margin,
         y: margin,

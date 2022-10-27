@@ -3,38 +3,40 @@ import styles from './styles/NavBar.module.css'
 
 const NavBar = () => {
   return (
+    <div className='oculto-impresion'>
     <nav className={styles.navbar}>
       <ul className={styles.ul}>
         <li className={styles.li}>
-          <button className={styles.button}>
             <NavLink className={styles.a} to='/home'>
+          <button className={styles.button}>
           Home
-            </NavLink>
           </button>
+            </NavLink>
         </li>
         <li className={styles.li}>
-          <button className={styles.button}>
             <NavLink className={styles.a} to='/delivery1'>
+          <button className={styles.button}>
               Primera Entrega
-            </NavLink>
           </button>
+            </NavLink>
         </li>
         <li className={styles.li}>
-          <button className={styles.button}>
             <NavLink className={styles.a} to='/deliveryt'>
+          <button className={styles.button}>
               Segunda Entrega
-            </NavLink>
           </button>
+            </NavLink>
         </li>
         <li className={styles.li}>
-          <button className={styles.button}>
             <NavLink className={styles.a} to='/deliverytee'>
+          <button className={styles.button}>
               Tercera Entrega
-            </NavLink>
           </button>
+            </NavLink>
         </li>
       </ul>
-    </nav>
+      </nav>
+    </div>
   )
 }
 

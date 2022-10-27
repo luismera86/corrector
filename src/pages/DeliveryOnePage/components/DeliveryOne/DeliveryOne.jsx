@@ -1,8 +1,13 @@
 import './deliveryOne.css'
 
+import {
+  getDeliveryOne,
+  setDeliveryOne,
+  setDevolution,
+} from '../../../../redux/features/deliveryOneSlice/deliveryOneSlice'
+import { useDispatch, useSelector } from 'react-redux'
+
 import DevolutionNote from '../../../../components/DevolutionNote/DevolutionNote'
-import { setDeliveryOne } from '../../../../redux/features/deliveryOneSlice/deliveryOneSlice'
-import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useReport } from '../../../../hook/useReport'
@@ -10,16 +15,31 @@ import { useReport } from '../../../../hook/useReport'
 const DeliveryOne = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { report, handleSaveComment, handleRemoveComment, handleNoteThreeActivities, handleCalculateResult } =
+  const deliveryOne = useSelector(state => state.deliveryOne)
+
+  const { handleSaveComment, handleRemoveComment, handleNoteThreeActivities, handleCalculateResult, handleCalculateDevolution, handleStudentName, report } =
     useReport()
 
-  const { commentOne, commentTwo, commentThree, resultNote, noteOne, noteTwo, noteThree } = report
+  const { commentOne, commentTwo, commentThree, resultNote, noteOne, noteTwo, noteThree, devolution } = report
+
+  useEffect(() => {
+    dispatch(getDeliveryOne())
+    handleStudentName(deliveryOne.studentName)
+  }, [dispatch, deliveryOne.studentName])
 
   useEffect(() => {
     handleCalculateResult()
+    dispatch(getDeliveryOne())
   }, [noteOne, noteTwo, noteThree])
+  
+  useEffect(() => {
+    handleCalculateDevolution()
+  }, [resultNote])
+
+
   useEffect(() => {
     dispatch(setDeliveryOne(report))
+    dispatch(getDeliveryOne())
   }, [report])
 
   return (
@@ -44,7 +64,11 @@ const DeliveryOne = () => {
               Bootstrap u otro framework para el uso adecuado de HTML5 *. El archivo JS está correctamente referenciado
               en el HTML.
             </p>
-            <select onChange={e => handleNoteThreeActivities(e)} className='select-evaluation' id='noteOne'>
+            <select
+              name='activityOne'
+              onChange={e => handleNoteThreeActivities(e)}
+              className='select-evaluation'
+              id='noteOne'>
               <option value='0'>Seleccionar</option>
               <option value='1'>Realizado</option>
               <option value='2'>Incompleto</option>
@@ -72,7 +96,11 @@ const DeliveryOne = () => {
               Se utiliza algoritmo condicional y con ciclo (IF, bucles for) de manera óptima , reflejando lo aprendido
               en clase.
             </p>
-            <select onChange={e => handleNoteThreeActivities(e)} className='select-evaluation' id='noteTwo'>
+            <select
+              name='activityTwo'
+              onChange={e => handleNoteThreeActivities(e)}
+              className='select-evaluation'
+              id='noteTwo'>
               <option value='0'>Seleccionar</option>
               <option value='1'>Realizado</option>
               <option value='2'>Incompleto</option>
@@ -101,7 +129,11 @@ const DeliveryOne = () => {
               correcta para el armado de las mismas. Crea funciones dinámicas de manera correcta. Generan un resultado
               correcto cuando se ejecutan.
             </p>
-            <select onChange={e => handleNoteThreeActivities(e)} className='select-evaluation' id='noteThree'>
+            <select
+              name='activityThree'
+              onChange={e => handleNoteThreeActivities(e)}
+              className='select-evaluation'
+              id='noteThree'>
               <option value='0'>Seleccionar</option>
               <option value='1'>Realizado</option>
               <option value='2'>Incompleto</option>
@@ -128,8 +160,8 @@ const DeliveryOne = () => {
           Resultado <span>{resultNote}</span>
         </h2>
       </div>
-      <div className='html2pdf__pagebreak'>
-        <DevolutionNote />
+      <div>
+        <textarea defaultValue={devolution} id='devolution-evaluation' className='devolution'></textarea>
       </div>
       <button className='button' onClick={() => navigate('/reportone', report)}>
         GENERAR INFORME

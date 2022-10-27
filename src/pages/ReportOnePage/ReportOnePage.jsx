@@ -1,18 +1,21 @@
+import { otro } from '../../services/otro'
+import { savePdf } from '../../services/html2pdf'
 import styles from './styles/ReportOnePage.module.css'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 const ReportOnePage = () => {
-
   const report = useSelector((state) => state.deliveryOne)
+  const { commentOne, commentTwo, commentThree, studentName, resultNote, activityOne, activityTwo, activityThree, devolution } = report
 
-  const { commentOne, commentTwo, commentThree, noteOne, noteTwo, noteThree } = report
-  
   useEffect(() => {
-    console.log(report)
+    // console.log(report)
   }, [report])
   return (
-    <div className={styles.reportonepage}>
+    <div className={styles.reportonepage } id='element'>
+      <h2>
+        Estudiante <span>{studentName}</span>
+      </h2>
       <section>
         <h2>Consigna Pre-entrega 1</h2>
         <p>Comienza a crear la estructura inicial de tu proyecto integrador. Deberás:</p>
@@ -29,7 +32,7 @@ const ReportOnePage = () => {
         La estructura HTML está completa y ejecutada con buenas prácticas o utiliza el el starter template de Bootstrap
         u otro framework para el uso adecuado de HTML5 *. El archivo JS está correctamente referenciado en el HTML.
         <h3>
-          Estado <samp>{ noteOne}</samp>
+          Estado <span>{activityOne}</span>
         </h3>
         <div>
           <h3>Comentarios</h3>
@@ -43,7 +46,7 @@ const ReportOnePage = () => {
           clase.
         </p>
         <h3>
-          Estado <samp>{/* aqui va el valor elegido */}</samp>
+          Estado <span>{activityTwo}</span>
         </h3>
         <div>
           <h3>Comentarios</h3>
@@ -53,22 +56,29 @@ const ReportOnePage = () => {
       <div>
         <h3>Funciones</h3>
         <p>
-		Los nombres de las funciones son claros y dan a entender que acción realizan. Se emplea la estructura correcta para el armado de las mismas. Crea funciones dinámicas de manera correcta. Generan un resultado correcto cuando se ejecutan.	
+          Los nombres de las funciones son claros y dan a entender que acción realizan. Se emplea la estructura correcta
+          para el armado de las mismas. Crea funciones dinámicas de manera correcta. Generan un resultado correcto
+          cuando se ejecutan.
         </p>
         <h3>
-          Estado <samp>{/* aqui va el valor elegido */}</samp>
+          Estado <span>{activityThree}</span>
         </h3>
         <div>
           <h3>Comentarios</h3>
           <p className={styles.comments}>{commentThree}</p>
         </div>
-		  </div>
-		  <section>
-			  <h2>Resultado </h2>
-			  <h3>Devolución</h3>
-			  <p>Comentarios del profesor</p>
-		  </section>
-		  <button className={styles.button}>Generar PDF</button>
+      </div>
+      <section>
+        <h2>
+          Resultado <span>{resultNote}</span>
+        </h2>
+        <h3>Devolución</h3>
+        <p>{devolution }</p>
+      </section>
+      <div className='oculto-impresion'>
+
+      <button onClick={() => {javascript:window.print()}} className={styles.button} >IMPRIMIR</button>
+      </div >
     </div>
   )
 }
