@@ -1,13 +1,8 @@
 import './deliveryOne.css'
 
-import {
-  getDeliveryOne,
-  setDeliveryOne,
-  setDevolution,
-} from '../../../../redux/features/deliveryOneSlice/deliveryOneSlice'
-import { useDispatch, useSelector } from 'react-redux'
+import { getDeliveryOne, setDeliveryOne } from '../../../../redux/features/deliveryOneSlice/deliveryOneSlice'
 
-import DevolutionNote from '../../../../components/DevolutionNote/DevolutionNote'
+import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useReport } from '../../../../hook/useReport'

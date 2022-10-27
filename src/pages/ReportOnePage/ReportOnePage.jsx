@@ -25,6 +25,13 @@ const ReportOnePage = () => {
         Comisión <span>{course}</span>
       </h2>
       <section>
+        <h2>
+          Resultado <span>{resultNote}</span>
+        </h2>
+        <h3>Devolución</h3>
+        <p>{devolution}</p>
+      </section>
+      <section>
         <h2>Consigna Pre-entrega 1</h2>
         <p>Comienza a crear la estructura inicial de tu proyecto integrador. Deberás:</p>
         <p>
@@ -76,13 +83,7 @@ const ReportOnePage = () => {
           <p className={styles.comments}>{commentThree}</p>
         </div>
       </div>
-      <section>
-        <h2>
-          Resultado <span>{resultNote}</span>
-        </h2>
-        <h3>Devolución</h3>
-        <p>{devolution}</p>
-      </section>
+      
       <div className='oculto-impresion'>
         <button
           onClick={() => {
