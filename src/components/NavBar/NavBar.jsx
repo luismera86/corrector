@@ -7,7 +7,7 @@ const NavBar = () => {
     <nav className={styles.navbar}>
       <ul className={styles.ul}>
         <li className={styles.li}>
-            <NavLink className={styles.a} to='/home'>
+            <NavLink className={styles.a} to='#'>
           <button className={styles.button}>
           Home
           </button>
@@ -21,14 +21,14 @@ const NavBar = () => {
             </NavLink>
         </li>
         <li className={styles.li}>
-            <NavLink className={styles.a} to='/deliveryt'>
+            <NavLink className={styles.a} to='#'>
           <button className={styles.button}>
               Segunda Entrega
           </button>
             </NavLink>
         </li>
         <li className={styles.li}>
-            <NavLink className={styles.a} to='/deliverytee'>
+            <NavLink className={styles.a} to='#'>
           <button className={styles.button}>
               Tercera Entrega
           </button>

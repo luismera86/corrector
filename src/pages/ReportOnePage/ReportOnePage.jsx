@@ -1,5 +1,3 @@
-import { otro } from '../../services/otro'
-import { savePdf } from '../../services/html2pdf'
 import styles from './styles/ReportOnePage.module.css'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
@@ -26,13 +24,13 @@ const ReportOnePage = () => {
         <p>- Armar la estructura HTML del proyecto. - Incorporar algoritmo condicional y algoritmo con ciclo.</p>
         <p>- Utilizar funciones para realizar esas operaciones.</p>
       </section>
-      <div>
         <h2>Evaluación</h2>
+      <div className={styles.box}>
         <h3>Estructura HTML y archivo JS</h3>
         La estructura HTML está completa y ejecutada con buenas prácticas o utiliza el el starter template de Bootstrap
         u otro framework para el uso adecuado de HTML5 *. El archivo JS está correctamente referenciado en el HTML.
         <h3>
-          Estado <span>{activityOne}</span>
+          Estado: <span>{activityOne}</span>
         </h3>
         <div>
           <h3>Comentarios</h3>
