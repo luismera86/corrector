@@ -1,11 +1,11 @@
 import './deliveryOne.css'
 
-import { getDeliveryOne, setDeliveryOne } from '../../../../redux/features/deliveryOneSlice/deliveryOneSlice'
+import { getDeliveryOne, setDeliveryOne } from '../../../../redux/features/deliveryOneSlice/deliveryOneSlice';
 
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useReport } from '../../../../hook/useReport'
+import { useReport } from './../../../../hook/useReport';
 
 const DeliveryOne = () => {
   const navigate = useNavigate()

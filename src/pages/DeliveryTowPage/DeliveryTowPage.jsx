@@ -1,6 +1,11 @@
+import { DeliveryTow } from "./component";
 
 const DeliveryTowPage = () => {
-	return <div>DeliveryTowPage</div>;
+	return (
+		<>
+		  <DeliveryTow />
+		</>
+	  )
 };
 
 export default DeliveryTowPage;

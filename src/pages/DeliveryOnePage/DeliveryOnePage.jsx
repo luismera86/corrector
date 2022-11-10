@@ -1,4 +1,4 @@
-import { DeliveryOne } from '../../components'
+import { DeliveryOne } from "./components"
 
 const DeliveryOnePage = () => {
   return (

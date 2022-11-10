@@ -21,7 +21,7 @@ const NavBar = () => {
             </NavLink>
         </li>
         <li className={styles.li}>
-            <NavLink className={styles.a} to='#'>
+            <NavLink className={styles.a} to='/delivery2'>
           <button className={styles.button}>
               Segunda Entrega
           </button>
